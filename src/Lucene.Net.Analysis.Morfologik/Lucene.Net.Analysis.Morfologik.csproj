@@ -26,11 +26,12 @@
     <Description>Analyzer for dictionary stemming, built-in Polish dictionary for the Lucene.NET full-text search engine library from The Apache Software Foundation.</Description>
     <PackageDocumentationRelativeUrl>analysis-morfologik/Lucene.Net.Analysis.Morfologik.html</PackageDocumentationRelativeUrl>
   </PropertyGroup>
-  
+
   <Import Project="$(SolutionDir).build/nuget.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net451</TargetFrameworks>
+    <TargetFrameworks>net6.0;netstandard2.1;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOsPlatform('Windows'))">$(TargetFrameworks);net451</TargetFrameworks>
 
     <AssemblyTitle>Lucene.Net.Analysis.Morfologik</AssemblyTitle>
     <RootNamespace>Lucene.Net.Analysis</RootNamespace>
@@ -39,7 +40,7 @@
     <NoWarn>$(NoWarn);1591;1573</NoWarn>
   </PropertyGroup>
 
-  
+
 
   <ItemGroup>
     <Compile Remove="Properties\AssemblyInfo.cs" />

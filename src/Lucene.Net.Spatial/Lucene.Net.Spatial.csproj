@@ -28,9 +28,10 @@
   </PropertyGroup>
 
   <Import Project="$(SolutionDir).build/nuget.props" />
-  
+
   <PropertyGroup>
-    <TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net45</TargetFrameworks>
+    <TargetFrameworks>net6.0;netstandard2.1;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOsPlatform('Windows'))">$(TargetFrameworks);net45</TargetFrameworks>
 
     <AssemblyTitle>Lucene.Net.Spatial</AssemblyTitle>
     <PackageTags>$(PackageTags);spatial;geo;geospatial;2d</PackageTags>
@@ -38,7 +39,7 @@
     <NoWarn>$(NoWarn);1591;1573</NoWarn>
   </PropertyGroup>
 
-  
+
 
   <ItemGroup>
     <ProjectReference Include="..\Lucene.Net\Lucene.Net.csproj" />
@@ -46,7 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Spatial4n.Core" Version="$(Spatial4nCorePackageVersion)" /> 
+    <PackageReference Include="Spatial4n.Core" Version="$(Spatial4nCorePackageVersion)" />
   </ItemGroup>
 
   <ItemGroup>
